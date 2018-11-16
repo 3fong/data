@@ -1,0 +1,22 @@
+server:
+  port: 8080
+  
+spring:
+  profiles:
+    active: dev
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.153.23/zzlh_zs_base?useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    username: root
+    password: 123456
+    
+mybatis:
+  typeAliasesPackage: com.zzlh.data
+  mapperLocations: classpath:mapper/*.xml
+  
+logging:
+  pattern:
+    file:%m%n
+  path: D:\temp\data
+  level: 
+    root: ERROR

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzlh.data.dao.OrganizationDao" >
+    <sql id="Base_Column_List" >
+        JGBH,JGMC,ZTDM,LXDZ,SBR,LXDH,EMAIL, ZCSJ,YZRY,YZSJ,SYBZ,GBDQ,
+        	DWXZ,XZQY,HYDM,CABH,ZXDJ,KHYH ,JBZH,YZBM,ZCZB,ZCBZ,ZCDW,FZR
+    </sql>
+    <select id="countDataId" resultType="java.lang.Integer">
+        select count(*)
+        from gg_jgbh
+        where DATA_ID is null
+    </select>
+    <select id="selectByDataId" resultType="com.zzlh.data.domain.JiGouBianHao" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List" />
+        from gg_jgbh
+        where DATA_ID is null
+        limit #{num};
+    </select>
+	<update id="updateDataId" parameterType="java.util.List">
+		<foreach collection="list" item="org" index="index" open="" close="" separator=";">
+			UPDATE gg_jgbh
+			<set>
+				data_id = #{org.DATAID}
+			</set>
+				where JGBH = #{org.JGBH}
+		</foreach>
+	</update>
+</mapper>

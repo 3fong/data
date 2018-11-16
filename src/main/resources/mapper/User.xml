@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zzlh.data.dao.UserDao" >
+    <resultMap id="BaseResultMap" type="com.zzlh.data.domain.User" >
+        <result column="JGMC" property="name" jdbcType="VARCHAR" />
+        <result column="ZTDM" property="subjectCode" jdbcType="VARCHAR" />
+        <result column="LXDZ" property="address" jdbcType="VARCHAR" />
+        <result column="SBR" property="contact" jdbcType="VARCHAR" />
+        <result column="LXDH" property="phone" jdbcType="VARCHAR" />
+        <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+        <!-- dicimal --> 
+        <result column="ZCSJ" property="registerTime" jdbcType="TIMESTAMP" />
+        <result column="YZRY" property="approveBy" jdbcType="VARCHAR" />
+        <!-- dicimal --> 
+        <result column="YZSJ" property="approveTime" jdbcType="TIMESTAMP" />
+        <!-- dicimal --> 
+        <result column="SYBZ" property="status" jdbcType="INTEGER" />
+        <result column="GBDQ" property="countryRegion" jdbcType="VARCHAR" />
+        
+        <result column="DWXZ" property="unitNature" jdbcType="VARCHAR" />
+        <result column="XZQY" property="regionCode" jdbcType="VARCHAR" />
+        <result column="HYDM" property="industryCode" jdbcType="VARCHAR" />
+        <result column="CABH" property="caCode" jdbcType="VARCHAR" />
+        <result column="ZXDJ" property="creditRate" jdbcType="VARCHAR" />
+        <result column="KHYH" property="openingBank" jdbcType="VARCHAR" />
+        
+        <result column="JBZH" property="basicAccount" jdbcType="VARCHAR" />
+        <!-- VARCHAR -->
+        <result column="YZBM" property="zipCode" jdbcType="DECIMAL" />
+        <result column="ZCZB" property="regCapital" jdbcType="DECIMAL" />
+        <result column="ZCBZ" property="regCapCurrency" jdbcType="VARCHAR" />
+        <result column="ZCDW" property="regUnit" jdbcType="VARCHAR" />
+        <result column="FZR" property="artificialPerson" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+        JGMC,ZTDM,LXDZ,SBR,LXDH,EMAIL, ZCSJ,YZRY,YZSJ,SYBZ,GBDQ,
+        	DWXZ,XZQY,HYDM,CABH,ZXDJ,KHYH ,JBZH,YZBM,ZCZB,ZCBZ,ZCDW,FZR
+    </sql>
+    <select id="selectByDataId" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List" />
+        from gg_jgbh
+        where DATA_ID is null
+        limit #{num};
+    </select>
+    <update id="update">
+        update gg_jgbh data_id = #{dataId,jdbcType=BIGINT},
+        where id = #{id,jdbcType=VARCHAR}
+    </update>
+</mapper>
