@@ -1,6 +1,5 @@
 package com.zzlh.data.dao;
 
-import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
@@ -19,5 +18,5 @@ public interface OrganizationDao {
 	
 	List<JiGouBianHao> selectByDataId(@Param("num") Integer num);
 	
-	int updateDataId(List<JiGouBianHao> dataIds);
+	int updateDataId(List<Map<String,Object>> dataIds);
 }

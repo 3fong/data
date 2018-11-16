@@ -21,9 +21,9 @@
 		<foreach collection="list" item="org" index="index" open="" close="" separator=";">
 			UPDATE gg_jgbh
 			<set>
-				data_id = #{org.DATAID}
+				data_id = #{org.dataId}
 			</set>
-				where JGBH = #{org.JGBH}
+				where JGBH = #{org.id}
 		</foreach>
 	</update>
 </mapper>
